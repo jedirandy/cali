@@ -1,12 +1,12 @@
 {
-  "name": "es6-boilerplate",
-  "version": "1.0.0",
-  "description": "",
+  "name": "gali",
+  "version": "0.0.1",
+  "description": "A FP-style lib",
   "main": "dist/index.js",
   "scripts": {
     "test": "karma start"
   },
-  "author": "",
+  "author": "Sheng",
   "license": "ISC",
   "devDependencies": {
     "babelify": "^7.2.0",
