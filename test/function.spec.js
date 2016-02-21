@@ -1,10 +1,13 @@
-import * as gali from '../src/main';
-let expect = require('chai').expect;
-
-describe('Gali tests', () => {
+import * as gali from '../src/function';
+describe('Functions tests', () => {
     it('identity', () => {
         let obj = {};
         expect(gali.identity(obj)).to.equal(obj);
+    });
+
+    it('curry a zero argument function returns that function', () => {
+        let f = () => 1;
+        expect(gali.curry(f)).to.equal(f);
     });
 
     it('curry a function', () => {
