@@ -17,7 +17,7 @@ gulp.task('build', () => {
     return browserify({
         entries: './src/main.js',
         debug: true,
-        standalone: 'gali'
+        standalone: 'cali'
     })
     .transform(babelify, {
         presets: ['es2015']

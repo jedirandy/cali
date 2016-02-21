@@ -1,6 +1,17 @@
-# Gali
+# Cali
 
-JS utilities with FP flavor
+A JS utility library in FP style
+
+## Installation
+```npm install cali```
+
+## Usage
+the module can be imported by AMD, CommonJS or ES6 loaders, or as the global variable 'cali'
+```js
+import * as cali from 'cali'
+```
+
+## API
 
 ### Functions
 

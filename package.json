@@ -1,5 +1,5 @@
 {
-  "name": "gali",
+  "name": "cali",
   "version": "0.0.1",
   "description": "A FP-style lib",
   "main": "dist/index.js",
@@ -35,5 +35,5 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/jedirandy/gali.git"
-  },
+  }
 }
