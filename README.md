@@ -5,10 +5,17 @@ A JS utility library in FP style
 ## Installation
 ```npm install cali```
 
+To be used in browsers, [babel-polyfill](https://babeljs.io/docs/usage/polyfill/) is required
+
 ## Usage
 the module can be imported by AMD, CommonJS or ES6 loaders, or as the global variable 'cali'
+
+example:
 ```js
-import * as cali from 'cali'
+// ES6
+import * as cali from 'cali';
+// CommonJS
+var cali = require('cali');
 ```
 
 ## API
@@ -47,7 +54,22 @@ maps over a collection, automatically curried
 map(a => a * 2)([1,2,3]) // [2,4,6]
 ```
 
-### Functors, Monads
+### Functors, Applicative, Monads
+
+#### Functor
+
+general functor
+```js
+let functor = new Functor(1);
+functor.fmap(a => a * 2) // Functor(2)
+```
+
+function functor
+```js
+let functor = new Functor(a => a + 1);
+let f = functor.fmap(a => a * 2) // f is equivalent to 'compose(a => a + 1, a => a * 2)'
+f(2) === (2 + 1) * 2
+```
 
 #### Maybe
 

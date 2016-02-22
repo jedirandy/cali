@@ -5,7 +5,7 @@ let Just = C.Just;
 let Nothing = C.Nothing;
 let id = a => a;
 describe('Containers tests', () => {
-    it('Functor', () => {
+    it('Functor laws', () => {
         let functor = new Functor(1);
         expect(
             functor.fmap(id).value
@@ -20,6 +20,14 @@ describe('Containers tests', () => {
         ).to.equal(
             functor.fmap(v => g(v)).fmap(v => f(v)).value
         )
+    });
+
+    it('calling fmap on a function functor will compose the functions', () => {
+        let functor = new Functor(a => a * 2);
+        let f = functor.fmap(a => a + 5);
+        expect(
+            f(1)
+        ).to.equal(7);
     });
 
     it('Maybe monad laws', () => {

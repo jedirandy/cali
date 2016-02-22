@@ -4,7 +4,10 @@ export class Functor {
         this._value = value;
     }
     fmap(f) {
-        return new Functor(f.call(null, this._value));
+        if (typeof this._value === 'function')
+            return functions.compose(f, this._value);
+        else
+            return new Functor(f.call(null, this._value));
     }
     get value() {
         return this._value;

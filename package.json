@@ -1,6 +1,6 @@
 {
   "name": "cali",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A FP-style lib",
   "main": "dist/index.js",
   "scripts": {
@@ -30,10 +30,9 @@
     "phantomjs": "~1.9.19"
   },
   "dependencies": {
-    "babel-polyfill": "^6.3.14"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/jedirandy/gali.git"
+    "url": "https://github.com/jedirandy/cali.git"
   }
 }
