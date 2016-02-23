@@ -5,12 +5,9 @@ A JS utility library in FP style
 ## Installation
 ```npm install cali```
 
-To be used in browsers, [babel-polyfill](https://babeljs.io/docs/usage/polyfill/) is required
-
 ## Usage
 the module can be imported by AMD, CommonJS or ES6 loaders, or as the global variable 'cali'
 
-example:
 ```js
 // ES6
 import * as cali from 'cali';
@@ -78,4 +75,3 @@ a container may have a value or nothing
 Just(2).bind(x => Just(2 * x)) // Just(4)
 Just(2).bind(x => Nothing).bind(x => Just(x)) // Nothing
 ```
-

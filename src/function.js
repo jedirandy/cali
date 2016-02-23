@@ -9,7 +9,7 @@ export function curry(fn) {
         if (fn.length <= args.length)
             return fn.apply(null, args);
         else
-            return curried.bind(null, ...args);
+            return (..._args) => curried.call(null, ...args.concat(_args));
     }
     return curried;
 }
