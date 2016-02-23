@@ -1,5 +1,7 @@
 node_modules/
 src/
 test/
+coverage/
 karma.conf.js
 gulpfile.js
+.travis.yml
