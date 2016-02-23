@@ -1,4 +1,7 @@
 # Cali
+[![Build Status](https://travis-ci.org/jedirandy/cali.svg?branch=master)](https://travis-ci.org/jedirandy/cali)
+[![dependencies](https://david-dm.org/jedirandy/cali.svg)](https://david-dm.org/jedirandy/cali)
+[![npm module](https://badge.fury.io/js/cali.svg)](https://www.npmjs.org/package/cali)
 
 A JS utility library in FP style
 
