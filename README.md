@@ -72,6 +72,14 @@ let f = functor.fmap(a => a * 2) // f is equivalent to 'compose(a => a + 1, a =>
 f(2) === (2 + 1) * 2
 ```
 
+#### Applicative
+
+applicative functor
+```js
+let applicative = new Applicative(a => a + 1);
+applicative.liftA(new Applicative(2)) // Applicative(3)
+```
+
 #### Maybe
 
 a container may have a value or nothing

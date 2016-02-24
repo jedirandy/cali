@@ -84,4 +84,12 @@ describe('Containers tests', () => {
                 .liftA(new Applicative('b')).value
         ).to.equal('ab');
     });
+
+    it('Maybe should be an applicative, it can wrap a function and use liftA', () => {
+        expect(
+            Just(a => a + 1)
+            .liftA(Just(2))
+            .value
+        ).to.equal(3);
+    });
 });
