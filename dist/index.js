@@ -1,12 +1,13 @@
-(function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}g.gali = f()}})(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+(function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}g.cali = f()}})(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 'use strict';
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
 exports._List = exports.Nothing = exports._Nothing = exports._Just = exports.Monad = exports.Applicative = exports.Functor = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 exports.Just = Just;
 
 var _function = require('./function');
@@ -31,7 +32,7 @@ var Functor = exports.Functor = function () {
     _createClass(Functor, [{
         key: 'fmap',
         value: function fmap(f) {
-            return new Functor(f.call(null, this._value));
+            if (typeof this._value === 'function') return functions.compose(f, this._value);else return new Functor(f.call(null, this._value));
         }
     }, {
         key: 'value',
@@ -95,6 +96,7 @@ var Monad = exports.Monad = function (_Applicative) {
 }(Applicative);
 
 // Maybe
+
 
 var _Just = exports._Just = function (_Monad) {
     _inherits(_Just, _Monad);
@@ -172,6 +174,9 @@ exports.identity = identity;
 exports.curry = curry;
 exports.compose = compose;
 exports.map = map;
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
 function identity(arg) {
     return arg;
 }
@@ -183,14 +188,20 @@ function curry(fn) {
             args[_key] = arguments[_key];
         }
 
-        if (fn.length <= args.length) return fn.apply(null, args);else return curried.bind.apply(curried, [null].concat(args));
+        if (fn.length <= args.length) return fn.apply(null, args);else return function () {
+            for (var _len2 = arguments.length, _args = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+                _args[_key2] = arguments[_key2];
+            }
+
+            return curried.call.apply(curried, [null].concat(_toConsumableArray(args.concat(_args))));
+        };
     };
     return curried;
 }
 
 function compose() {
-    for (var _len2 = arguments.length, fns = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
-        fns[_key2] = arguments[_key2];
+    for (var _len3 = arguments.length, fns = Array(_len3), _key3 = 0; _key3 < _len3; _key3++) {
+        fns[_key3] = arguments[_key3];
     }
 
     return function (arg) {
@@ -233,6 +244,4 @@ exports.map = _function.map;
 
 },{"./container":1,"./function":2}]},{},[3])(3)
 });
-
-
 //# sourceMappingURL=index.js.map

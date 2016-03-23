@@ -16,7 +16,7 @@ gulp.task('default', () => {
 gulp.task('build', () => {
     return browserify({
         entries: './src/main.js',
-        debug: true,
+        debug: false,
         standalone: 'cali'
     })
     .transform(babelify, {
