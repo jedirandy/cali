@@ -10,7 +10,7 @@ A JS utility library in FP style
 ```npm install cali```
 
 ## Usage
-the module can be imported by AMD, CommonJS or ES6 loaders, or as the global variable 'cali'
+the library can be imported by AMD, CommonJS or ES6 loaders, or as the global variable 'cali'
 
 ```js
 // ES6
