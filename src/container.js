@@ -21,7 +21,7 @@ export class Applicative extends Functor {
         else
             super(value);
     }
-    liftA(a) {
+    ap(a) {
         return new Applicative(this._value.call(null, a.value));
     }
 }

@@ -76,19 +76,19 @@ describe('Containers tests', () => {
         ).to.equal(4);
     });
 
-    it('liftA of an Applicative takes a function and applies to a value', () => {
+    it('ap of an Applicative takes a function and applies to a value', () => {
         let concat = new Applicative((a, b) => a + b);
         expect(
             concat
-                .liftA(new Applicative('a'))
-                .liftA(new Applicative('b')).value
+                .ap(new Applicative('a'))
+                .ap(new Applicative('b')).value
         ).to.equal('ab');
     });
 
     it('Maybe should be an applicative, it can wrap a function and use liftA', () => {
         expect(
             Just(a => a + 1)
-            .liftA(Just(2))
+            .ap(Just(2))
             .value
         ).to.equal(3);
     });

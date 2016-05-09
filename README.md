@@ -77,7 +77,7 @@ f(2) === (2 + 1) * 2
 applicative functor
 ```js
 let applicative = new Applicative(a => a + 1);
-applicative.liftA(new Applicative(2)) // Applicative(3)
+applicative.ap(new Applicative(2)) // Applicative(3)
 ```
 
 #### Maybe
